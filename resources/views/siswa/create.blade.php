@@ -3,17 +3,17 @@
 <form action="{{ route('siswa.store') }}" method="POST">
     @csrf
 
-    <label>Nama</label><br>
-    <input type="text" name="nama" required><br><br>
+    Nama : <br>
+    <input type="text" name="nama"><br><br>
 
-    <label>Kelas</label><br>
-    <input type="text" name="kelas" required><br><br>
+    Kelas : <br>
+    <input type="text" name="kelas"><br><br>
 
-    <label>Jurusan</label><br>
-    <input type="text" name="jurusan" required><br><br>
+    Jurusan : <br>
+    <input type="text" name="jurusan"><br><br>
 
-    <label>Alamat</label><br>
-    <textarea name="alamat" required></textarea><br><br>
+    Alamat : <br>
+    <textarea name="alamat"></textarea><br><br>
 
     <button type="submit">Simpan</button>
 </form>

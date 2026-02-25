@@ -28,13 +28,27 @@ class SiswaController extends Controller
 
     public function store(Request $request)
     {
-        Siswa::create([
-            'nama' => $request->nama,
-            'kelas' => $request->kelas,
-            'jurusan' => $request->jurusan,
-            'alamat' => $request->alamat
-        ]);
+        Siswa::create($request->all());
+        return redirect('/siswa');
+    }
 
+    public function edit($id)
+    {
+        $siswa = Siswa::findOrFail($id);
+        return view('siswa.edit', compact('siswa'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $siswa = Siswa::findOrFail($id);
+        $siswa->update($request->all());
+        return redirect('/siswa');
+    }
+
+    public function destroy($id)
+    {
+        $siswa = Siswa::findOrFail($id);
+        $siswa->delete();
         return redirect('/siswa');
     }
 }
