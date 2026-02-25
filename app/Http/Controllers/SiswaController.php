@@ -18,6 +18,14 @@ class SiswaController extends Controller
         return view('siswa.create');
     }
 
+    public function destroy(Siswa $siswa)
+    {
+        $siswa->delete();
+
+        return redirect()->route('siswa.index')
+                        ->with('success', 'Data berhasil dihapus');
+    }
+
     public function store(Request $request)
     {
         Siswa::create([
