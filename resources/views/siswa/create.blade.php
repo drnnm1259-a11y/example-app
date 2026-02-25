@@ -1,19 +1,49 @@
-<h2>Tambah Data Siswa</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tambah Siswa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 
-<form action="{{ route('siswa.store') }}" method="POST">
-    @csrf
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            Tambah Data Siswa
+        </div>
+        <div class="card-body">
 
-    Nama : <br>
-    <input type="text" name="nama"><br><br>
+            <form action="{{ route('siswa.store') }}" method="POST">
+                @csrf
 
-    Kelas : <br>
-    <input type="text" name="kelas"><br><br>
+                <div class="mb-3">
+                    <label class="form-label">Nama</label>
+                    <input type="text" name="nama" class="form-control" required>
+                </div>
 
-    Jurusan : <br>
-    <input type="text" name="jurusan"><br><br>
+                <div class="mb-3">
+                    <label class="form-label">Kelas</label>
+                    <input type="text" name="kelas" class="form-control" required>
+                </div>
 
-    Alamat : <br>
-    <textarea name="alamat"></textarea><br><br>
+                <div class="mb-3">
+                    <label class="form-label">Jurusan</label>
+                    <input type="text" name="jurusan" class="form-control" required>
+                </div>
 
-    <button type="submit">Simpan</button>
-</form>
+                <div class="mb-3">
+                    <label class="form-label">Alamat</label>
+                    <textarea name="alamat" class="form-control" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Simpan</button>
+                <a href="{{ route('siswa.index') }}" class="btn btn-secondary">Kembali</a>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
