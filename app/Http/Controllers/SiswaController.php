@@ -12,4 +12,21 @@ class SiswaController extends Controller
         $siswas = Siswa::all();
         return view('siswa.index', compact('siswas'));
     }
+
+    public function create()
+    {
+        return view('siswa.create');
+    }
+
+    public function store(Request $request)
+    {
+        Siswa::create([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'jurusan' => $request->jurusan,
+            'alamat' => $request->alamat
+        ]);
+
+        return redirect('/siswa');
+    }
 }
