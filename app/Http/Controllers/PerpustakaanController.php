@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perpustakaan;
 use Illuminate\Http\Request;
 
 class PerpustakaanController extends Controller
@@ -11,7 +12,8 @@ class PerpustakaanController extends Controller
      */
     public function index()
     {
-        return view('perpustakaan.index');
+        $perpustakaans = Perpustakaan::all();
+        return view('perpustakaan.index', compact('perpustakaans'));
     }
 
     /**

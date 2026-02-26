@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('siswas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    Schema::create('perpustakaans', function (Blueprint $table) {
+        $table->id();
+        $table->string('cover')->nullable();
+        $table->string('judul');
+        $table->string('penulis');
+        $table->string('penerbit');
+        $table->text('tahun_terbit');
+        $table->timestamps();
+    });
     }
 
     /**
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('siswas');
+        //
     }
 };
