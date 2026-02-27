@@ -9,9 +9,16 @@ class Siswa extends Model
     protected $table = 'siswas';
 
     protected $fillable = [
+        'name',
+        'email',
+        'password',
         'nama',
         'kelas',
         'jurusan',
         'alamat'
     ];
+    protected $hidden = [
+    'password',
+    'remember_token',
+];
 }
