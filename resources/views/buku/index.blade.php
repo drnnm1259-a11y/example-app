@@ -10,10 +10,18 @@
 
     <h2 class="mb-4 text-center">📚 Data Buku Perpustakaan</h2>
 
-    <a href="{{ route('buku.create') }}" class="btn btn-primary mb-3">
+    <div class="d-flex justify-content-between mb-3">
+    <a href="{{ route('buku.create') }}" class="btn btn-primary">
         + Tambah Buku
     </a>
 
+    <form action="/logout" method="POST">
+        @csrf
+        <button class="btn btn-danger">Logout</button>
+    </form>
+</div>
+
+    
     <div class="card shadow">
         <div class="card-body">
 

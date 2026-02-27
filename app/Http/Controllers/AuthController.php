@@ -28,7 +28,9 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect('/login')->with('success','Registrasi berhasil, silakan login');
+        Auth::attempt($request->only('email','password'));
+
+        return redirect('/dashboard')->with('success','Registrasi berhasil');
     }
 
     public function showLogin()
@@ -38,9 +40,15 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
         if(Auth::attempt($request->only('email','password')))
         {
-            return redirect('/siswa')->with('success','Login berhasil');
+            $request->session()->regenerate();
+            return redirect('/dashboard')->with('success','Login berhasil');
         }
 
         return back()->with('error','Email atau password salah');

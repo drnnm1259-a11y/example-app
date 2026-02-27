@@ -15,10 +15,13 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-
 Route::post('/logout', [AuthController::class, 'logout']);
 
-/* SISWA (HARUS LOGIN) */
+/* DASHBOARD */
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth');
+
+/* SISWA & BUKU (WAJIB LOGIN) */
 Route::resource('siswa', SiswaController::class)->middleware('auth');
-Route::resource('siswa', SiswaController::class);
-Route::resource('buku', BukuController::class);
+Route::resource('buku', BukuController::class)->middleware('auth');
