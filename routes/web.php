@@ -1,20 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SiswaController;
-<<<<<<< HEAD
-use App\Http\Controllers\BukuController;
-=======
-use App\Http\Controllers\PerpustakaanController;
->>>>>>> aba93074b2d33b7c3a471fda556377e768089159
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
-Route::resource('siswa', SiswaController::class);
-<<<<<<< HEAD
-Route::resource('buku', BukuController::class);
-=======
-Route::resource('perpustakaan', PerpustakaanController::class);
->>>>>>> aba93074b2d33b7c3a471fda556377e768089159
+/* AUTH */
+Route::get('/register', [AuthController::class, 'showRegister']);
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+/* SISWA (HARUS LOGIN) */
+Route::resource('siswa', SiswaController::class)->middleware('auth');

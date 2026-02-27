@@ -10,6 +10,11 @@
 
     <h2 class="mb-4 text-center">📚 Data Siswa</h2>
 
+    <form action="/logout" method="POST" class="mb-3">
+    @csrf
+    <button class="btn btn-danger btn-sm">Logout</button>
+</form>
+
     <div class="mb-3 text-end">
         <a href="{{ route('siswa.create') }}" class="btn btn-primary">
             + Tambah Data
